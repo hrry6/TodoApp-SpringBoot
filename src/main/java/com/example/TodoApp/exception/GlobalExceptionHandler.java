@@ -1,0 +1,22 @@
+package com.example.TodoApp.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.example.TodoApp.dto.ApiResponse;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+	@ExceptionHandler(RuntimeException.class)
+	public ResponseEntity<ApiResponse<String>> handleRuntime(RuntimeException ex) {
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse<>(400, ex.getMessage()));
+	}
+
+	@ExceptionHandler()
+	public ResponseEntity<ApiResponse<String>> handleGenral(Exception ex) {
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse<>(500, ex.getMessage()));
+	}
+
+}

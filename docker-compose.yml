@@ -1,10 +1,10 @@
 services:
   postgres:
     image: postgres:15
-    container_name: taskapp_db
+    container_name: todoapp_db
     restart: always
     environment:
-      POSTGRES_DB: taskdb
+      POSTGRES_DB: tododb
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
