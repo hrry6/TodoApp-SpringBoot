@@ -1,0 +1,162 @@
+Dokumentasi API
+
+Register
+Method: POST
+Url: http://localhost:8080/auth/register
+Body:
+{
+  "username": "Cihuy",
+  "password": "123456"
+}
+Response:
+{
+  "status": 200,
+  "response": "User Registered"
+}
+
+-----------------------------------------------------------
+Login
+Method: GET
+Url: http://localhost:8080/auth/login
+Body:
+{
+  "username": "Cihuy",
+  "password": "123456"
+}
+Response:
+{
+  "status": 200,
+  "response": {
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaWh1eSIsImlhdCI6MTc3ODEzNjc3OCwiZXhwIjoxNzc4MjIzMTc4fQ.S0JzxYfHAhEu9iOR3PLnQ460mRGqZNwCDH8DeNUsgjk"
+  }
+}
+
+-----------------------------------------------------------
+Create Task
+Method: POST
+Url: http://localhost:8080/tasks
+Header:
+    Authorization: Bearer TOKEN
+Body:
+{
+  "title": "FLA",
+  "body": "Make Task APP with Design Pattern",
+  "priority": "HIGH"
+}
+Response:
+{
+  "status": 200,
+  "response": {
+    "id": 1,
+    "title": "FLA",
+    "body": "Make Task APP with Design Pattern",
+    "priority": "HIGH",
+    "isCompleted": null,
+    "weight": 3,
+    "urgent": true
+  }
+}
+
+-----------------------------------------------------------
+Get All Task
+Method: GET
+Url: http://localhost:8080/tasks
+Header:
+    Authorization: Bearer TOKEN
+Response:
+{
+  "status": 200,
+  "response": [
+    {
+      "id": 1,
+      "title": "FLA",
+      "body": "Make Task APP with Design Pattern",
+      "priority": "HIGH",
+      "isCompleted": null,
+      "weight": 3,
+      "urgent": true
+    }
+  ]
+}
+
+-----------------------------------------------------------
+Get Task By Id
+Method: GET
+Url: http://localhost:8080/tasks/id/1
+Header:
+    Authorization: Bearer TOKEN
+Response:
+{
+  "status": 200,
+  "response": {
+    "id": 1,
+    "title": "FLA",
+    "body": "Make Task APP with Design Pattern",
+    "priority": "HIGH",
+    "isCompleted": null,
+    "weight": 3,
+    "urgent": true
+  }
+}
+
+-----------------------------------------------------------
+Search Task By Id
+Method: GET
+Url: http://localhost:8080/tasks/search?keyword=fla
+Param: 
+keyword = ?
+Header:
+    Authorization: Bearer TOKEN
+Response:
+{
+  "status": 200,
+  "response": [
+    {
+      "id": 1,
+      "title": "FLA",
+      "body": "Make Task APP with Design Pattern",
+      "priority": "HIGH",
+      "isCompleted": null,
+      "weight": 3,
+      "urgent": true
+    }
+  ]
+}
+
+-----------------------------------------------------------
+Update Task By Id
+Method: PUT
+Url: http://localhost:8080/tasks/id/1
+Header:
+    Authorization: Bearer TOKEN
+Body:
+{
+  "title": "FLA",
+  "body": "Make Task APP with Design Pattern",
+  "priority": "MEDIUM"
+}
+Response:
+{
+  "status": 200,
+  "response": {
+    "id": 1,
+    "title": "FLA",
+    "body": "Make Task APP with Design Pattern",
+    "priority": "MEDIUM",
+    "isCompleted": null,
+    "weight": 2,
+    "urgent": false
+  }
+}
+
+-----------------------------------------------------------
+Delete Task By Id
+Method: DELETE
+Url: http://localhost:8080/tasks/id/1
+Header:
+    Authorization: Bearer TOKEN
+Response:
+{
+  "status": 200,
+  "response": "Task deleted"
+}
