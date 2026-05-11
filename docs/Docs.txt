@@ -5,6 +5,7 @@ Method: POST
 Url: http://localhost:8080/auth/register
 Body:
 {
+  "name": "Cihuy",
   "username": "Cihuy",
   "password": "123456"
 }

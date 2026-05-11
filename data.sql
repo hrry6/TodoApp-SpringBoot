@@ -70,6 +70,7 @@ ALTER SEQUENCE public.tasks_id_seq OWNED BY public.tasks.id;
 
 CREATE TABLE public.users (
     id integer NOT NULL,
+    name character varying(50) NOT NULL,
     username character varying(50) NOT NULL,
     password character varying(255) NOT NULL,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
@@ -126,7 +127,7 @@ COPY public.tasks (id, title, body, priority, user_id, is_completed, created_at,
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users (id, username, password, created_at) FROM stdin;
+COPY public.users (id,name, username, password, created_at) FROM stdin;
 \.
 
 
